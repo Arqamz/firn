@@ -1,0 +1,8 @@
+{ ... }:
+{
+  imports = [
+    ./core
+    ./features
+    ./roles
+  ];
+}
