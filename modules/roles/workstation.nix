@@ -12,6 +12,7 @@ in
     my.features.audio.pipewire.enable = lib.mkDefault true;
     my.features.power.enable = lib.mkDefault true;
     my.features.power.mobile = lib.mkDefault false; # Plugged in
+    my.features.shell.zsh.enable = lib.mkDefault true;
     
     hardware.bluetooth.enable = lib.mkDefault true;
 
