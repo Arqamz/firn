@@ -19,6 +19,12 @@
       # Ensure noctalia uses the same version of nixpkgs as this flake to avoid verification issues or duplication
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Dotfiles flake containing configuration files
+    dotfiles = {
+      url = "github:arqamz/dotfiles";
+      flake = true;
+    };
   };
 
   # ============================================================================

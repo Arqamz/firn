@@ -1,12 +1,27 @@
 {
   "nodes": {
+    "dotfiles": {
+      "locked": {
+        "lastModified": 1768601935,
+        "narHash": "sha256-OBEdC9Bbp52DNyI49kKB//oEIHFT+rf9c9h9ZneeGTg=",
+        "owner": "arqamz",
+        "repo": "dotfiles",
+        "rev": "46a4c4ee446962114b60c56a87764b65e19faa12",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arqamz",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1768127708,
-        "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
+        "lastModified": 1768305791,
+        "narHash": "sha256-AIdl6WAn9aymeaH/NvBj0H9qM+XuAuYbGMZaP0zcXAQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ffbc9f8cbaacfb331b6017d5a5abb21a492c9a38",
+        "rev": "1412caf7bf9e660f2f962917c14b1ea1c3bc695e",
         "type": "github"
       },
       "original": {
@@ -18,11 +33,11 @@
     },
     "nixpkgs-small": {
       "locked": {
-        "lastModified": 1768293512,
-        "narHash": "sha256-bCZymHz8mBoW4u+ThvTZwHiOEPh0Wm3+zqog7KwR0CI=",
+        "lastModified": 1768553552,
+        "narHash": "sha256-exVs5I2z5DPPEFi5Q04aqEOWK3kJrq9oBtljTriE9Eo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ccfbb9cd5859cc51c9d720b47b08e48d1aff633f",
+        "rev": "a6b8b0f0ceb6d4f5da70808e26c68044099460fd",
         "type": "github"
       },
       "original": {
@@ -39,11 +54,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768058714,
-        "narHash": "sha256-nyRGU5f04tal39wtjYxhNFfEOgOrlZiNp7oZRsdjqpw=",
+        "lastModified": 1768592664,
+        "narHash": "sha256-IOowvlO6ObgSV8oOVJKaBuzQdqkRz28UH2lRk46SLPc=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "740b2741e1a3913fa06aa46553818e9d3d7fbba8",
+        "rev": "24832354eed0e7549e6f57726950ba415fb23e77",
         "type": "github"
       },
       "original": {
@@ -54,6 +69,7 @@
     },
     "root": {
       "inputs": {
+        "dotfiles": "dotfiles",
         "nixpkgs": "nixpkgs",
         "nixpkgs-small": "nixpkgs-small",
         "noctalia": "noctalia"
