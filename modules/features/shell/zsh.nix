@@ -12,9 +12,13 @@ in
 
     environment.systemPackages = with pkgs; [
       zsh-powerlevel10k
-      meslo-lgs-nf
       zsh-autosuggestions
       zsh-syntax-highlighting
+    ];
+
+    fonts.packages = with pkgs; [
+      meslo-lgs-nf
+      nerd-fonts.jetbrains-mono
     ];
 
     # Add p10k configuration file to /etc/powerlevel10k/p10k.zsh

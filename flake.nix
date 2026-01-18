@@ -13,6 +13,9 @@
     # Small channel for faster updates
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
+    # NixOS on WSL
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     # Quickshell based `pretty` desktop shell for Wayland.
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
@@ -44,6 +47,11 @@
           system = "x86_64-linux";
           # Host-specific configuration modules
           modules = [ ./hosts/platinum ];
+        };
+        zinc = lib.mkSystem {
+          hostname = "zinc";
+          system = "x86_64-linux";
+          modules = [ ./hosts/zinc ];
         };
       };
     };
