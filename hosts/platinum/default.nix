@@ -20,6 +20,7 @@
   # ============================================================================
   # Features
   # ============================================================================
+  
   # Graphical
   my.features.graphical.niri.enable = true;
   
@@ -27,7 +28,15 @@
   my.features.audio.pipewire.enable = true;
   
   # Network
-  my.features.network.enable = true;
+  my.features.network = {
+    dns.enable = true;
+    manager.enable = true;
+    firewall.enable = true;
+    vpn.tailscale.enable = true;
+  };
+
+  # DNS servers must be set manually since the feature doesn't assume them
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
   
   # Security
   my.features.security.enable = true;
