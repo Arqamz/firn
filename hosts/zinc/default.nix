@@ -4,24 +4,31 @@
     inputs.nixos-wsl.nixosModules.default
   ];
 
-  networking.hostName = "zinc";
-
+  # ============================================================================
+  # WSL-Specific Configuration
+  # ============================================================================
   wsl.enable = true;
   wsl.defaultUser = "arqam";
-
-  # Enable the 'interactive' role
-  my.roles.interactive.enable = true;
-
-  # The VSCode Remote server can not be run as-is on NixOS
-  # because it downloads a nodejs binary that requires /lib64/ld-linux-x86-64.so.2
-  # to be present, which isn't the case on NixOS.
-  # Nix-ld provides the missing loader and allows the server to run.
+          
+  # The VSCode Remote server requires /lib64/ld-linux-x86-64.so.2
+  # Nix-ld provides the missing loader
   programs.nix-ld.enable = true;
 
+  # ============================================================================
+  # Features
+  # ============================================================================
+  # Security
+  my.features.security.enable = true;
+  my.features.security.passwordlessSudo = true;
+
+  # ============================================================================
+  # User Configuration
+  # ============================================================================
   users.users.arqam = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    packages = with pkgs; [
+      texliveTeTeX
+    ];
   };
-
-  system.stateVersion = "25.05";
 }

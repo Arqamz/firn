@@ -1,3 +1,9 @@
+# ============================================================================
+# Power Management Feature
+# ============================================================================
+# Power management with UPower and tuned.
+# Set `mobile = true` for laptop-specific optimizations.
+# ============================================================================
 { config, lib, pkgs, ... }:
 let
   cfg = config.my.features.power;
