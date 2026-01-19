@@ -1,9 +1,14 @@
+# ============================================================================
+# Niri Compositor Feature
+# ============================================================================
+# Scrollable tiling Wayland compositor with greetd login manager.
+# ============================================================================
 { config, lib, pkgs, ... }:
 let
-  cfg = config.my.features.desktop.niri;
+  cfg = config.my.features.graphical.niri;
 in
 {
-  options.my.features.desktop.niri.enable = lib.mkEnableOption "Niri Window Manager";
+  options.my.features.graphical.niri.enable = lib.mkEnableOption "Niri Window Manager";
 
   config = lib.mkIf cfg.enable {
     programs.niri.enable = true;

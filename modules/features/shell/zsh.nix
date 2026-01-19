@@ -1,3 +1,8 @@
+# ============================================================================
+# ZSH Shell Feature
+# ============================================================================
+# ZSH with Powerlevel10k, Oh My Zsh, autosuggestions, and syntax highlighting.
+# ============================================================================
 { config, lib, pkgs, inputs, ... }:
 let
   cfg = config.my.features.shell.zsh;

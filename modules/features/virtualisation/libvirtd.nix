@@ -1,3 +1,8 @@
+# ============================================================================
+# Libvirtd Virtualisation Feature
+# ============================================================================
+# Full virtualisation stack with libvirt, QEMU, virt-manager, and tools.
+# ============================================================================
 { config, lib, pkgs, ... }:
 let
   cfg = config.my.features.virtualisation.libvirtd;

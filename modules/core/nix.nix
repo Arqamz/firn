@@ -1,3 +1,8 @@
+# ============================================================================
+# Nix Core Settings
+# ============================================================================
+# Universal Nix configuration applied to every system.
+# These settings enable flakes, optimize storage, and set up garbage collection.
 { pkgs, ... }:
 {
   nix = {
@@ -14,11 +19,10 @@
 
   nixpkgs.config.allowUnfree = true;
   
+  # Absolute minimum packages required for any NixOS system
   environment.systemPackages = with pkgs; [
     git
     vim
     wget
-    htop
-    pinentry-curses
   ];
 }

@@ -34,23 +34,52 @@
   # Outputs
   # ============================================================================
   # The resulting configurations and packages produced by this flake.
+  #
+  # Each host is defined declaratively with:
+  #   - hostname: The network name for the machine
+  #   - system: The target architecture (e.g., x86_64-linux)
+  #   - platform: The base configuration type (e.g., nixos-linux, nixos-wsl)
+  #   - stateVersion: The NixOS release for state compatibility
+  #   - roles: High-level machine purposes (e.g., interactive, compute)
+  #   - modules: Machine-specific configurations and hardware definitions
+  #
+  # This "drip-down" design means alot of the configuration can be abstracted here,
+  # and host files only contain machine-specific features and overrides.
+  # ============================================================================
   outputs = { self, nixpkgs, ... }@inputs:
     let
       # Import custom library functions (e.g. mkSystem) passing inputs for access
       lib = import ./lib { inherit inputs; };
     in {
       # NixOS System Configurations
-      # Accessible via `nixos-rebuild switch --flake .#platinum`
+      # Accessible via `nixos-rebuild switch --flake .#<hostname>`
       nixosConfigurations = {
+        
+        # ======================================================================
+        # Platinum - Desktop Workstation
+        # ======================================================================
+        # My main desktop workstation used for development, VMs, and daily driving
+        # Boasting an AMD Ryzen 7 7700 CPU, Nvidia RTX 5060 Ti GPU, and 64GB RAM.
         platinum = lib.mkSystem {
           hostname = "platinum";
           system = "x86_64-linux";
-          # Host-specific configuration modules
+          platform = "nixos-linux";
+          stateVersion = "25.11";
+          roles = [ "interactive" "compute" ];
           modules = [ ./hosts/platinum ];
         };
+        
+        # ======================================================================
+        # Zinc - WSL Instances
+        # ======================================================================
+        # https://github.com/nix-community/NixOS-WSL
+        # A headless WSL environment for any development on Windows.
         zinc = lib.mkSystem {
           hostname = "zinc";
           system = "x86_64-linux";
+          platform = "nixos-wsl";
+          stateVersion = "25.05";
+          roles = [ "interactive" ];
           modules = [ ./hosts/zinc ];
         };
       };
