@@ -15,12 +15,10 @@
 #   - WSL: interactive
 #   - VM Host: server + compute
 # ============================================================================
-{ ... }:
+{ lib, ... }:
 {
-  imports = [
-    ./interactive.nix
-    ./mobile.nix
-    ./compute.nix
-    ./server.nix
-  ];
+  imports = lib.recursivelyImport {
+    list = [ ./. ];
+    exclude = [ ./default.nix ];
+  };
 }

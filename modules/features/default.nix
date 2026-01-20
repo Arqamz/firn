@@ -17,17 +17,10 @@
 # Features are narrow, composable, and implementation-focused.
 # They do NOT assume any role - enable them explicitly for a host or via roles.
 # ============================================================================
-{ ... }:
+{ lib, ... }:
 {
-  imports = [
-    ./hardware/nvidia.nix
-    ./graphical
-    ./audio/pipewire.nix
-    ./virtualisation/libvirtd.nix
-    ./shell/zsh.nix
-    ./power
-    ./network
-    ./security
-    ./system
-  ];
+  imports = lib.recursivelyImport {
+    list = [ ./. ];
+    exclude = [ ./default.nix ];
+  };
 }

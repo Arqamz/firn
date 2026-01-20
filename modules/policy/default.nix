@@ -1,9 +1,7 @@
-{ ... }:
+{ lib, ... }:
 {
-  imports = [
-    ./cleanup.nix
-    ./freedom.nix
-    ./security.nix
-    ./tailnet.nix
-  ];
+  imports = lib.recursivelyImport {
+    list = [ ./. ];
+    exclude = [ ./default.nix ];
+  };
 }

@@ -4,9 +4,10 @@
 # The absolute minimum configuration applied to every NixOS system.
 # This should contain ONLY settings that are universally required.
 # Everything else belongs in features/ or roles/.
-{ ... }:
+{ lib, ... }:
 {
-  imports = [
-    ./nix.nix
-  ];
+  imports = lib.recursivelyImport {
+    list = [ ./. ];
+    exclude = [ ./default.nix ];
+  };
 }

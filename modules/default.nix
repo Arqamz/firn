@@ -10,12 +10,10 @@
 #
 # This module is automatically imported by lib/mkSystem for every host.
 # ============================================================================
-{ ... }:
+{ lib, ... }:
 {
-  imports = [
-    ./core
-    ./features
-    ./policy
-    ./roles
-  ];
+  imports = lib.recursivelyImport {
+    list = [ ./. ];
+    exclude = [ ./default.nix ];
+  };
 }
