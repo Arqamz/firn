@@ -1,4 +1,7 @@
 { inputs }:
+let
+  recursivelyImport = import ./recursivelyImport.nix { lib = inputs.nixpkgs.lib; };
+in
 {
   # ============================================================================
   # mkSystem Helper
@@ -37,7 +40,11 @@
       inherit system;
       
       # Pass flake inputs and platform to all modules
-      specialArgs = specialArgs // { inherit inputs platform; };
+      # Also extend lib with project helpers (recursivelyImport)
+      specialArgs = specialArgs // {
+        inherit inputs platform;
+        lib = inputs.nixpkgs.lib.extend (_: _: { inherit recursivelyImport; });
+      };
       
       modules = [
         # ======================================================================

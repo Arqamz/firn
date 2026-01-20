@@ -28,6 +28,13 @@ in
 
     # CLI Tools
     environment.systemPackages = with pkgs; [
+
+      # Nix tooling
+      nix-index
+      nix-du
+      nix-tree
+      cachix
+
       # Archive utilities
       zip
       unzip
