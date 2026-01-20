@@ -19,11 +19,8 @@
   # ============================================================================
   
   # Security
+  # Enables GNUPG agent, OpenSSH server, and sudo settings
   my.features.security.enable = true;
-  my.features.security.passwordlessSudo = true;
-
-  # Network (WSL only needs VPN overlay, no NM/Firewall/DNS)
-  my.features.network.vpn.tailscale.enable = true;
 
   # ============================================================================
   # User Configuration

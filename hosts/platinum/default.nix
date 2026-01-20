@@ -32,15 +32,14 @@
     dns.enable = true;
     manager.enable = true;
     firewall.enable = true;
-    vpn.tailscale.enable = true;
   };
 
   # DNS servers must be set manually since the feature doesn't assume them
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
   
   # Security
+  # Enables GNUPG agent, OpenSSH server, and sudo settings
   my.features.security.enable = true;
-  my.features.security.passwordlessSudo = true;
   
   # System (boot/locale)
   my.features.system.enable = true;
