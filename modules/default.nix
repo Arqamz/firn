@@ -15,6 +15,7 @@
   imports = [
     ./core
     ./features
+    ./policy
     ./roles
   ];
 }

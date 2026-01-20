@@ -25,6 +25,7 @@ Firn serves as the central declarative configuration for my fleet of NixOS machi
 - **`hosts/`**: Machine-specific configurations. Each directory here corresponds to a nix host, containing its hardware scan (`hardware-configuration.nix`) and unique overrides (`default.nix`).
 - **`modules/`**: The building blocks of the system.
   - **`core/`**: The baseline configuration defaults applied to every machine (e.g., general security policies, networking basics) — these options can be overridden by a specific host if needed.
+  - **`policy/`**: Intentional defaults and global preferences (e.g., unfree software, tailscale, garbage collection).
   - **`features/`**: Individual units of functionality (e.g., a specific desktop environment, service, or hardware support).
   - **`roles/`**: Collections of features that define a system's purpose (e.g., `workstation` or `laptop`).
 - **`lib/`**: Any custom library functions to streamline system creation and reduce boilerplate.
