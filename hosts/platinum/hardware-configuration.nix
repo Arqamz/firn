@@ -10,8 +10,15 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  # Enable LVM in stage 1 initrd
+  boot.initrd.services.lvm.enable = true;
+
   # UUID for swap device (hibernate mode) since labels (/dev/disk/swap/) are not guaranteed to exist in early initramfs
-  boot.kernelParams = [ "resume=UUID=c78fd22d-8d8e-487e-b4ae-9f3272295039" ];
+  # Wait for lvm
+  boot.kernelParams = [ 
+    "resume=UUID=c78fd22d-8d8e-487e-b4ae-9f3272295039" 
+    "rd.lvm.wait=1"
+  ];
 
   fileSystems."/" =
     { device = "/dev/mapper/vg0-lv--root";
