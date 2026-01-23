@@ -19,11 +19,22 @@
     # Quickshell based `pretty` desktop shell for Wayland.
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
-      # Ensure noctalia uses the same version of nixpkgs as this flake to avoid verification issues or duplication
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Dotfiles flake containing configuration files
+    # OpenCode
+    opencode = {
+      url = "github:anomalyco/opencode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Antigravity Nix
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Personal dotfiles flake containing configuration files
     dotfiles = {
       url = "github:arqamz/dotfiles";
       flake = true;

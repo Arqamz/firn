@@ -56,8 +56,13 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "kvm" ];
     packages = with pkgs; [
-      # Noctalia shell (from flake input)
+      # Flake inputs
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.antigravity-nix.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+      # CLI
+      license-cli
 
       # GUI Applications
       spotify-tray
