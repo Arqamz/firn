@@ -59,9 +59,13 @@
       # Noctalia shell (from flake input)
       inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+      # CLI
+      license-cli
+
       # GUI Applications
       spotify-tray
       vscode
+      antigravity
       spotify
       google-chrome
       whatsapp-electron
