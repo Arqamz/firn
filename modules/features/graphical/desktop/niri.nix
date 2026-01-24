@@ -1,19 +1,14 @@
-# ============================================================================
-# Niri Compositor Feature
-# ============================================================================
-# Scrollable tiling Wayland compositor with greetd login manager.
-# ============================================================================
 { config, lib, pkgs, ... }:
 let
-  cfg = config.my.features.graphical.niri;
+  cfg = config.my.features.graphical.desktop.niri;
 in
 {
-  options.my.features.graphical.niri.enable = lib.mkEnableOption "Niri Window Manager";
+  options.my.features.graphical.desktop.niri.enable = lib.mkEnableOption "Niri Window Manager";
 
   config = lib.mkIf cfg.enable {
     programs.niri.enable = true;
     
-    # dependencies/tools that will be used
+    # Dependencies/tools that will be used
     environment.systemPackages = with pkgs; [
       foot
       gpu-screen-recorder
@@ -27,6 +22,7 @@ in
     ];
 
     # Tuigreet and Greetd as display manager
+    # Move this to displaymanager once I figure out how to have a more dynamic session management (sysc-greeter?)
     services.greetd = {
       enable = true;
       settings = {
