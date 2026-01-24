@@ -93,6 +93,20 @@
           roles = [ "interactive" ];
           modules = [ ./hosts/zinc ];
         };
+
+        # ======================================================================
+        # Nickel - Simple Graphical Host
+        # ======================================================================
+        # A small, straightforward graphical system used on my laptop and VMs
+        # for quick testing and trying out new features (DEs/WMs and more).
+        nickel = lib.mkSystem {
+          hostname = "nickel";
+          system = "x86_64-linux";
+          platform = "nixos-linux";
+          stateVersion = "25.11";
+          roles = [ "interactive" ];
+          modules = [ ./hosts/nickel ];
+        };
       };
     };
 }
