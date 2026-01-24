@@ -93,6 +93,19 @@
           roles = [ "interactive" ];
           modules = [ ./hosts/zinc ];
         };
+
+        # ======================================================================
+        # Nickel - Simple Graphical VM
+        # ======================================================================
+        # A graphical VM host that is used for testing out new features.
+        nickel = lib.mkSystem {
+          hostname = "nickel";
+          system = "x86_64-linux";
+          platform = "nixos-linux";
+          stateVersion = "25.11";
+          roles = [ "interactive" ];
+          modules = [ ./hosts/nickel ];
+        };
       };
     };
 }
