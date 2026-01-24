@@ -22,7 +22,7 @@
   # ============================================================================
   
   # Graphical
-  my.features.graphical.niri.enable = true;
+  my.features.graphical.desktop.niri.enable = true;
   
   # Audio
   my.features.audio.pipewire.enable = true;
