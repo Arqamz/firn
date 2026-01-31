@@ -73,6 +73,9 @@
   users.users.arqam = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
+    openssh.authorizedKeys.keys = [ 
+      config.my.constants.ssh-keys.arqam
+    ];
   };
 
 }

@@ -31,5 +31,8 @@
     packages = with pkgs; [
       texliveTeTeX
     ];
+    openssh.authorizedKeys.keys = [ 
+      config.my.constants.ssh-keys.arqam
+    ];
   };
 }

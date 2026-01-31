@@ -75,5 +75,8 @@
       mpv
       nemo
     ];
+    openssh.authorizedKeys.keys = [ 
+      config.my.constants.ssh-keys.arqam
+    ];
   };
 }
