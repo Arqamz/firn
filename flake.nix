@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Agenix - age-encrypted secrets for NixOS
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Personal dotfiles flake containing configuration files
     dotfiles = {
       url = "github:arqamz/dotfiles";

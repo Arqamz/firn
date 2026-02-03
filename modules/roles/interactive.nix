@@ -11,10 +11,11 @@
 #   - CLI tools (ripgrep, fd, jq, yazi, eza, etc.)
 #   - Terminal fonts
 #   - TUI utilities
+#   - Agenix CLI for managing encrypted secrets
 #
 # It does NOT assume graphical capabilities, audio, or hardware features.
 # ============================================================================
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   cfg = config.my.roles.interactive;
 in
@@ -28,6 +29,8 @@ in
 
     # CLI Tools
     environment.systemPackages = with pkgs; [
+      # Secret management - agenix CLI
+      inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
 
       # Nix tooling
       nix-index
