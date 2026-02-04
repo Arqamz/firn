@@ -58,6 +58,9 @@ let
   # All currently deployed hosts.
   allHosts  = [ platinum nickel zinc ];
 
+  # Hosts that connect to home wifi
+  wifiHomeHosts = [ platinum ];
+
 in
 {
   # ==========================================================================
@@ -69,4 +72,9 @@ in
   # Tailscale VPN authentication key
   # Centralized tailnet joining control across all hosts
   "tailscale-authkey.age".publicKeys = users ++ allHosts;
+
+  # Home WiFi credentials
+  # Secrets are envsubst-style environment files (KEY=VALUE),
+  # on a separate line each and substituted into NetworkManager profiles.
+  "wifi-home-envsubst.age".publicKeys = users ++ wifiHomeHosts;
 }

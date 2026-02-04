@@ -32,6 +32,7 @@
     dns.enable = true;
     manager.enable = true;
     firewall.enable = true;
+    wifi.home.enable = true;
   };
 
   # DNS servers must be set manually since the feature doesn't assume them

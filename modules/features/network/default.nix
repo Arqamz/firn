@@ -10,5 +10,6 @@
     ./manager/networkmanager.nix
     ./firewall/nftables.nix
     ./vpn/tailscale.nix
+    ./wifi/home.nix
   ];
 }

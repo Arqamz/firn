@@ -32,6 +32,16 @@ in
         owner = "root";
         group = "root";
       };
+
+      # ----------------------------------------------------------------------
+      # Home WiFi (NetworkManager envsubst)
+      # ----------------------------------------------------------------------
+      wifi-home-envsubst = {
+        file = secretsPath + "/wifi-home-envsubst.age";
+        mode = "600";
+        owner = "root";
+        group = "root";
+      };
       
     };
   };
