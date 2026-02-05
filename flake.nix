@@ -112,6 +112,33 @@
           roles = [ "interactive" ];
           modules = [ ./hosts/nickel ];
         };
+
+        # ======================================================================
+        # Boron - Raspberry Pi Zero 2W
+        # ======================================================================
+        # A headless Raspberry Pi Zero 2W for light hosting and stuff I throw at it.
+        # Cross-compiled from x86_64-linux and deployed remotely via SSH.
+        # Deploy with:
+        # nixos-rebuild switch --flake .#boron --target-host boron --build-host localhost
+        boron = lib.mkSystem {
+          hostname = "boron";
+          system = "aarch64-linux";
+          buildSystem = "x86_64-linux";
+          platform = "nixos-linux";
+          stateVersion = "25.11";
+          roles = [ "server" ];
+          modules = [ ./hosts/boron ];
+        };
+      };
+
+      # ========================================================================
+      # Packages
+      # ========================================================================
+      # Expose SD images and other build artifacts as packages
+      packages.x86_64-linux = {
+        # Boron SD card image for Raspberry Pi Zero 2W
+        # Build with: nix build .#boron-image
+        boron-image = self.nixosConfigurations.boron.config.system.build.sdImage;
       };
     };
 }

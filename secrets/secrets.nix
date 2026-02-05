@@ -49,6 +49,7 @@ let
   platinum = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLrCLEn9gUL5nwmS+d9xum0dHXWZ3BdbBUX11k3pJ2a root@platinum";
   zinc     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPUB82G8QJGcqeahNp8accYDk4pQhHJ3mOSO012tdkqV root@zinc";
   nickel   = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBTiBav7ZtqVmy+y/mau9qMEdxO12TI9TvMZkSJmuVJY root@nickel";
+  boron    = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGm2Q83h79/AeajpkFUgfnFUElXIG/k+Mm3gK/AtrBf+ root@boron";
 
   # ==========================================================================
   # Host Groups
@@ -56,10 +57,10 @@ let
   # Logical groupings for secret access control.
   
   # All currently deployed hosts.
-  allHosts  = [ platinum nickel zinc ];
+  allHosts  = [ platinum nickel zinc boron ];
 
   # Hosts that connect to home wifi
-  wifiHomeHosts = [ platinum ];
+  wifiHomeHosts = [ platinum boron ];
 
 in
 {
