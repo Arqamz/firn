@@ -15,7 +15,7 @@
 #
 # It does NOT assume graphical capabilities, audio, or hardware features.
 # ============================================================================
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, packageSets, ... }:
 let
   cfg = config.my.roles.interactive;
 in
@@ -27,40 +27,14 @@ in
     # Enable ZSH shell feature
     my.features.shell.zsh.enable = lib.mkDefault true;
 
-    # CLI Tools
-    environment.systemPackages = with pkgs; [
-      # Secret management - agenix CLI
-      inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-      # Nix tooling
-      nix-index
-      nix-du
-      nix-tree
-      cachix
-
-      # Archive utilities
-      zip
-      unzip
-      
-      # Search and find
-      ripgrep
-      fd
-      jq
-      
-      # System inspection
-      pciutils
-      usbutils
-      dmidecode
-      lshw
-      htop
-      
-      # File management
-      yazi
-      eza
-      
-      # QOL
-      microfetch
-    ];
+    # Package composition from constants
+    environment.systemPackages = (
+      packageSets.core
+      ++ packageSets.nix
+      ++ packageSets.inspect
+      ++ packageSets.net
+      ++ packageSets.ux
+    );
 
     # Font configuration for terminals
     fonts.packages = with pkgs; [

@@ -14,7 +14,7 @@
 #
 # It explicitly does NOT enable interactive, graphical, or audio features.
 # ============================================================================
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, packageSets, ... }:
 let
   cfg = config.my.roles.server;
 in
@@ -22,7 +22,11 @@ in
   options.my.roles.server.enable = lib.mkEnableOption "Server Role";
 
   config = lib.mkIf cfg.enable {
-    # Service-first defaults
-    # Minimal UX settings
+    my.features.shell.zsh.enable = lib.mkDefault true;
+
+    environment.systemPackages = (
+      packageSets.core
+      ++ packageSets.net
+    );
   };
 }
