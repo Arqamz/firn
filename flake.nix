@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Hyprland Wayland compositor
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    };
+
     # OpenCode
     opencode = {
       url = "github:anomalyco/opencode";
@@ -86,6 +91,20 @@
           modules = [ ./hosts/platinum ];
         };
         
+        # ======================================================================
+        # Antimony - Laptop Workstation
+        # ======================================================================
+        # Secondary HP Pavilion 15 (i7-8550U, UHD 620 + 940MX, 512GB SSD)
+        # used for mobile development, testing, and overflow workloads.
+        antimony = lib.mkSystem {
+          hostname = "antimony";
+          system = "x86_64-linux";
+          platform = "nixos-linux";
+          stateVersion = "25.11";
+          roles = [ "interactive" "mobile" ];
+          modules = [ ./hosts/antimony ];
+        };
+
         # ======================================================================
         # Zinc - WSL Instances
         # ======================================================================
