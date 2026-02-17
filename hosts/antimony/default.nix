@@ -8,7 +8,7 @@
 #   - Intel i7-8550U CPU with UHD 620 iGPU and a 940MX dGPU
 #   - Btrfs filesystem with subvolumes (@root, @nix, @persist)
 # ============================================================================
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
   imports = [
     # Include the results of the hardware scan (file systems, kernel modules, etc.)
@@ -28,23 +28,11 @@
   time.timeZone = "Asia/Karachi";
 
   # ============================================================================
-  # Nix Configuration
-  # ============================================================================
-  # Configure Cachix for Hyprland binary cache
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
-
-  # ============================================================================
   # Features
   # ============================================================================
   
   # Graphical - Hyprland compositor
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  };
+  my.features.graphical.desktop.hyprland.enable = true;
   
   # Audio
   my.features.audio.pipewire.enable = true;
@@ -65,6 +53,9 @@
     enable = true;
     passwordlessSudo = true;
   };
+
+  # For remote deployment over ssh
+  services.openssh.settings.PermitRootLogin = lib.mkForce "yes";
   
   # Tailscale VPN
   my.features.network.vpn.tailscale.enable = true;
